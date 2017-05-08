@@ -13,36 +13,36 @@ code online at http://site234.digitalskillsacademy.me/MD2/
 
 */
 
-input {
+input { /*overrides JQM default values*/
 	margin: 0 0 1em 0!important;
 	font-size: 1.5em!important;
 }
 
-div.ui-select {
+div.ui-select { /*overrides JQM default values*/
 	margin: 0 0 1em 0!important;
 }
 
-.sum_text {
+.sum_text { /*increments text size in header summaries*/
 	font-size: 1.5em;
 }
 
-#main_page {
+#main_page { /*linear gradient for page background*/
 	background-image:  linear-gradient(#cecbec,#fbfbfb);
 }
 
-.form_cont {
+.form_cont { /*styles for form container*/
 	text-align: center;
 	width: 100%;
 }
 
-ul {
+ul { /*overrides UL default styles*/
 	list-style-type: none;
 	text-align: center;
 	padding: 0;
 
 }
 
-.task_frame {
+.task_frame { /*styles for list items frame*/
 	border: 1px solid black;
 	text-align: center;
 	margin: 1% 0;
@@ -57,7 +57,7 @@ ul {
 	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
-.task_title {
+.task_title { /*styles for list items title*/
 	margin: 0;
 	padding: 1%;
 	text-transform: uppercase;
@@ -65,23 +65,25 @@ ul {
 	font-weight: bold;
 }
 
-.ui-btn-inner {
+.ui-btn-inner { /*removes border from button inner content*/
 	border: none;
 }
 
-.urgent_sum {
+.urgent_sum { /*urgent summary background*/
 	background-image: linear-gradient(#b50808,#ef3232);
 }
 
-.important_sum {
+.important_sum { /*important summary background*/
 	background-image: linear-gradient(orange,#efeda8);
 }
 
-.delayable_sum {
+.delayable_sum { /*delayable summary background*/
 	background-image: linear-gradient(#058811,#a8efae);
 }
 
-.Urgent {
+
+/*ADDITIONAL STYLES FOR ITEMS DEPENDING ON THEIR PRIORITY (MAPS TO <SELECT> OPTIONS)*/
+.Urgent { 
 	border-color: red;
 	color: red;
 	box-shadow: red
@@ -95,4 +97,4 @@ ul {
 .Delayable {
 	border-color: green;
 	color: green;
-}
+}/*END OF ADDITIONAL STYLES*/

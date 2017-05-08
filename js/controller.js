@@ -39,19 +39,19 @@ myApp.controller("appController", function ($scope) {
 
 			$scope.items.push(//appends the object with the new values to the items array
 				{
-				"name": $scope.newItems.name, 
-				"desc": $scope.newItems.desc, 
+				"name": $scope.newItemsName, 
+				"desc": $scope.newItemsDesc, 
 				"prior": $scope.priority.selectedOption.name,
-				"dead": $scope.newItems.dead
+				"dead": $scope.newItemsDead
 				}
 			);
 
 			localStorage.setItem('tasks', JSON.stringify($scope.items)); //writes the new array to localStorage
 
 			//next 3 lines reset the form fields
-			$scope.newItems.name = '';
-			$scope.newItems.desc = '';
-			$scope.newItems.dead = '';
+			$scope.newItemsName = '';
+			$scope.newItemsDesc = '';
+			$scope.newItemsDead = '';
 
 			$().jqRedirect();//call to the jqRedirect function to load the partial for main_page
 
@@ -60,9 +60,9 @@ myApp.controller("appController", function ($scope) {
 	$scope.goto_form = function() {//function to load the partial for form_page
 
 			//next 3 lines reset the form fields
-			$scope.newItems.name = '';
-			$scope.newItems.desc = '';
-			$scope.newItems.dead = '';
+			$scope.newItemsName = '';
+			$scope.newItemsDesc = '';
+			$scope.newItemsDead = '';
 
 			$().jqFormRedirect();//call to the jqRedirect function to load the partial for main_page
 	};

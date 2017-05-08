@@ -36,19 +36,19 @@ code online at http://site234.digitalskillsacademy.me/MD2/
 					<!--START OF URGENT BLOCK-->
 					<li class="ui-block-a"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline urgent_sum"><span class="ui-btn-inner">
 						<!--FOLLOWING CODE FILTERS ITEM LIST ARRAY TO COUNT URGENT ITEMS AND DISPLAY RESULT-->
-						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Urgent'})"></span>
+						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Urgent'}) track by $index"></span>
 						<span class="sum_text">{{filtered.length}} Urgent</span></span></a></li>
 					<!--/URGENT-->
 					<!--START OF IMPORTANT BLOCK-->
 					<li class="ui-block-b"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-inline ui-btn-up-a important_sum"><span class="ui-btn-inner">
 						<!--FOLLOWING CODE FILTERS ITEM LIST ARRAY TO COUNT IMPORTANT ITEMS AND DISPLAY RESULT-->
-						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Important'})"></span>
+						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Important'}) track by $index"></span>
 						<span class="sum_text">{{filtered.length}} Important</span></span></a></li>
 					<!--/IMPORTANT-->
 					<!--START OF DELAYABLE BLOCK-->
 					<li class="ui-block-c"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline delayable_sum"><span class="ui-btn-inner">
 						<!--FOLLOWING CODE FILTERS ITEM LIST ARRAY TO COUNT DELAYABLE ITEMS AND DISPLAY RESULT-->
-						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Delayable'})"></span>
+						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Delayable'}) track by $index"></span>
 						<span class="sum_text">{{filtered.length}} Delayable</span></span></a></li>
 					<!--/DELAYABLE-->
 				</ul>
@@ -95,19 +95,19 @@ code online at http://site234.digitalskillsacademy.me/MD2/
 					<!--START OF URGENT BLOCK-->
 					<li class="ui-block-a"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline urgent_sum"><span class="ui-btn-inner">
 						<!--FOLLOWING CODE FILTERS ITEM LIST ARRAY TO COUNT URGENT ITEMS AND DISPLAY RESULT-->
-						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Urgent'})"></span>
+						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Urgent'}) track by $index"></span>
 						<span class="sum_text">{{filtered.length}} Urgent</span></span></a></li>
 					<!--/URGENT-->
 					<!--START OF IMPORTANT BLOCK-->
 					<li class="ui-block-b"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-inline ui-btn-up-a important_sum"><span class="ui-btn-inner">
 						<!--FOLLOWING CODE FILTERS ITEM LIST ARRAY TO COUNT IMPORTANT ITEMS AND DISPLAY RESULT-->
-						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Important'})"></span>
+						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Important'}) track by $index"></span>
 						<span class="sum_text">{{filtered.length}} Important</span></span></a></li>
 					<!--/IMPORTANT-->
 					<!--START OF DELAYABLE BLOCK-->
 					<li class="ui-block-c"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline delayable_sum"><span class="ui-btn-inner">
 						<!--FOLLOWING CODE FILTERS ITEM LIST ARRAY TO COUNT DELAYABLE ITEMS AND DISPLAY RESULT-->
-						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Delayable'})"></span>
+						<span data-ng-repeat="item in filtered = (items | filter:{prior:'Delayable'}) track by $index"></span>
 						<span class="sum_text">{{filtered.length}} Delayable</span></span></a></li>
 					<!--/DELAYABLE-->
 				</ul>
@@ -121,11 +121,11 @@ code online at http://site234.digitalskillsacademy.me/MD2/
 
 			<div class="form_cont">
 				<form name="task_form">
-					<input id="nameInput" type="text" data-theme="e" data-ng-model="newItems.name" placeholder="Title"/><!--Input text for Title-->
+					<input id="nameInput" type="text" data-theme="e" data-ng-model="newItemsName" placeholder="Title (min 3 chars)"/><!--Input text for Title-->
 
-					<input id="descInput" type="text" data-theme="e" data-ng-model="newItems.desc" placeholder="Description (Optional)"/><!--Input text for Optional description-->
+					<input id="descInput" type="text" data-theme="e" data-ng-model="newItemsDesc" placeholder="Description (Optional)"/><!--Input text for Optional description-->
 
-			    	<select  id="priorInput" data-theme="e" ng-init="option.name='Urgent'" ng-options="option.name for option in priority.availableOptions track by option.name" ng-model="priority.selectedOption"></select><!--Select field for Priority-->
+			    	<select  id="priorInput" data-theme="e" ng-options="option.name for option in priority.availableOptions track by option.id" ng-model="priority.selectedOption"></select><!--Select field for Priority-->
 			    	
 					<!--DATE PICKER-->
 					<!-- //Code reuse
@@ -135,7 +135,7 @@ code online at http://site234.digitalskillsacademy.me/MD2/
 					    <span class="input-group-addon">
 					        <i class="octicon octicon-calendar"></i>
 					    </span>
-		    			<input id="dateInput" class="form-control" data-theme="e" placeholder="Complete by? (Optional)" ng-model="newItems.dead">
+		    			<input id="dateInput" class="form-control" data-theme="e" placeholder="Complete by? (Optional)" ng-model="newItemsDead">
 					</div>
 					<!-- end of code reuse -->
 					<!--/DATE PICKER-->
@@ -153,7 +153,7 @@ code online at http://site234.digitalskillsacademy.me/MD2/
 		<div data-role="footer" data-id="foo2" data-position="fixed" data-theme="b" data-content-theme="b">
 			<div data-role="navbar">
 				<ul class="ui-btn">
-					<li><a href="#main_page" data-ng-click="cancel()" data-icon="delete" class="footer_txt">CANCEL</a></li><!-- Activating footer launches cancel function-->
+					<li><a href="#main_page" data-ng-click="cancel()" data-icon="delete" class="footer_txt">CANCEL</a></li><!-- Activating footer launches 'cancel' function-->
 				</ul>
 			</div><!-- /navbar -->
 		</div><!-- /footer -->

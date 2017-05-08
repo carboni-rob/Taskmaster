@@ -21,8 +21,6 @@ code online at http://site234.digitalskillsacademy.me/MD2/
     versionCode = "10"
     version     = "1.0.0" >
 
-<!-- versionCode is optional and Android only -->
-
   <name>Taskmaster</name>
 
   <description>
