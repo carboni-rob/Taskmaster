@@ -1,0 +1,141 @@
+<!--
+
+* Author: ROBERTO CARBONI
+
+* Assignment: BScH Mobile Development, Digital Skills Academy
+
+* Student ID: STU-00001225 * Date : 2017/05/01
+
+* Ref: SEE INLINE COMMENTS
+
+==========================================================
+code online at http://site234.digitalskillsacademy.me/MD2/
+==========================================================
+
+-->
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="Taskmaster">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Taskmaster</title>
+</head>
+<body data-ng-controller="appController">
+	
+	<div data-role="page" data-theme="d" data-content-theme="d" id="main_page">
+	
+		<div data-role="header" data-position="fixed" class="ui-header ui-bar-d" role="banner" data-id="header">
+			<!--<h1 class="ui-title" role="heading" aria-level="1">Taskmaster</h1>-->
+				
+			<div data-role="navbar" class="ui-navbar ui-mini" role="navigation">
+				<ul class="ui-grid-b">
+					<li class="ui-block-a"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline urgent_sum"><span class="ui-btn-inner"><span data-ng-repeat="item in filtered = (items | filter:{prior:'Urgent'})"></span><span class="sum_text">{{filtered.length}} Urgent</span></span></a></li>
+					<li class="ui-block-b"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-inline ui-btn-up-a important_sum"><span class="ui-btn-inner"><span data-ng-repeat="item in filtered = (items | filter:{prior:'Important'})"></span><span class="sum_text">{{filtered.length}} Important</span></span></a></li>
+					<li class="ui-block-c"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline delayable_sum"><span class="ui-btn-inner"><span data-ng-repeat="item in filtered = (items | filter:{prior:'Delayable'})"></span><span class="sum_text">{{filtered.length}} Delayable</span></span></a></li>
+				</ul>
+			</div><!-- /navbar -->
+
+		</div><!-- /header -->
+
+		<ul id="itemsList">
+			<li data-ng-repeat="currentItem in items track by $index" class="task_list">
+					<div class="task_frame {{currentItem.prior}}">
+						<div class="task_title">{{currentItem.name}}</div>
+						<div class="task_desc">{{currentItem.desc}}</div>
+						<div class="task_deadline">{{currentItem.dead}}</div>
+						<a href="#" data-role="button" data-icon="delete" data-inline="true" data-ng-click="delete($index)">Delete this Task</a>
+					</div>
+			</li>
+		</ul>
+
+		<div data-role="footer" data-id="foo1" data-position="fixed" data-theme="b" data-content-theme="b">
+			<div data-role="navbar">
+				<ul class="ui-btn">
+					<li ><a href="#form_page" data-icon="add" data-ng-click="goto_form()">ADD A TASK</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+
+	</div><!-- /main_page ----------------------------------------------------------------------------------------------- -->
+
+	<div data-role="page" data-theme="d" data-content-theme="d" id="form_page">
+
+				
+			<div data-role="header" data-position="fixed" class="ui-header ui-bar-d" role="banner" data-id="header">
+			<!--<h1 class="ui-title" role="heading" aria-level="1">Taskmaster</h1>-->
+				
+			<div data-role="navbar" class="ui-navbar ui-mini" role="navigation">
+				<ul class="ui-grid-b">
+					<li class="ui-block-a"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline urgent_sum"><span class="ui-btn-inner"><span data-ng-repeat="item in filtered = (items | filter:{prior:'Urgent'})"></span><span class="sum_text">{{filtered.length}} Urgent</span></span></a></li>
+					<li class="ui-block-b"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-inline ui-btn-up-a important_sum"><span class="ui-btn-inner"><span data-ng-repeat="item in filtered = (items | filter:{prior:'Important'})"></span><span class="sum_text">{{filtered.length}} Important</span></span></a></li>
+					<li class="ui-block-c"><a href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline delayable_sum"><span class="ui-btn-inner"><span data-ng-repeat="item in filtered = (items | filter:{prior:'Delayable'})"></span><span class="sum_text">{{filtered.length}} Delayable</span></span></a></li>
+				</ul>
+			</div><!-- /navbar -->
+
+		</div><!-- /header -->
+
+
+		<div class="container ui-field-contain" data-role="content">
+
+			<div class="form_cont">
+				<form name="task_form">
+					<input id="nameInput" type="text" data-theme="e" data-ng-model="newItems.name" placeholder="Title"/>
+
+					<input id="descInput" type="text" data-theme="e" data-ng-model="newItems.desc" placeholder="Description (Optional)"/>
+
+			    	<select  id="priorInput" data-theme="e" ng-init="option.name='Urgent'" ng-options="option.name for option in priority.availableOptions track by option.name" ng-model="priority.selectedOption"></select>
+			    	
+					<!-- //Code reuse
+						// Ref: http://indrimuska.github.io/angular-moment-picker/
+						// Ref: Angular Moment Picker by Indri Muska -->
+					<div class="input-group" moment-picker="newItems.dead" format="DD-MM-YYYY">
+					    <span class="input-group-addon">
+					        <i class="octicon octicon-calendar"></i>
+					    </span>
+		    			<input id="dateInput" class="form-control" data-theme="e" placeholder="Complete by? (Optional)" ng-model="newItems.dead">
+					</div>
+					<!-- end of code reuse -->
+
+					<button id="addButt" data-ng-click="addItem('main_page')" data-icon="add" data-inline="true" data-theme="e">Add task</button>
+					
+				</form>
+			</div><!-- /form -->
+
+		</div><!-- /controller -->
+
+		<div data-role="footer" data-id="foo2" data-position="fixed" data-theme="b" data-content-theme="b">
+			<div data-role="navbar">
+				<ul class="ui-btn">
+					<li><a href="#main_page" data-ng-click="cancel()" data-icon="delete" class="footer_txt">CANCEL</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+
+	</div>
+		
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.2/jquery.mobile-1.1.2.min.css" />
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.2/jquery.mobile-1.1.2.min.js"></script>
+		<link rel="stylesheet" href="css/custom.css" />
+
+	  	<!-- Include the Angularjs library -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+		<script type="text/javascript" src="js/controller.js"></script>
+
+		<!-- Include Moment with Locale library -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+
+		<!-- Include Angular Moment Picker library -->
+		<script src="https://cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+
+		<!-- Include Angular Moment Picker CSS file -->
+		<link href="https://cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+
+		<script src="js/scripts.js"></script>
+
+	</div>
+
+</body>
+</html>

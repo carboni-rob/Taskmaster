@@ -1,0 +1,98 @@
+/*
+* Author: ROBERTO CARBONI
+
+* Assignment: BScH Mobile Development, Digital Skills Academy
+
+* Student ID: STU-00001225 * Date : 2017/05/01
+
+* Ref: SEE INLINE COMMENTS
+
+==========================================================
+code online at http://site234.digitalskillsacademy.me/MD2/
+==========================================================
+
+*/
+
+input {
+	margin: 0 0 1em 0!important;
+	font-size: 1.5em!important;
+}
+
+div.ui-select {
+	margin: 0 0 1em 0!important;
+}
+
+.sum_text {
+	font-size: 1.5em;
+}
+
+#main_page {
+	background-image:  linear-gradient(#cecbec,#fbfbfb);
+}
+
+.form_cont {
+	text-align: center;
+	width: 100%;
+}
+
+ul {
+	list-style-type: none;
+	text-align: center;
+	padding: 0;
+
+}
+
+.task_frame {
+	border: 1px solid black;
+	text-align: center;
+	margin: 1% 0;
+	width: 90%;
+	margin: auto;
+	border-radius: 20px;
+	background-image:  linear-gradient(#fbfbfb,#cecbec);
+	margin-bottom: 3%;
+	border: .3em solid;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.task_title {
+	margin: 0;
+	padding: 1%;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.ui-btn-inner {
+	border: none;
+}
+
+.urgent_sum {
+	background-image: linear-gradient(#b50808,#ef3232);
+}
+
+.important_sum {
+	background-image: linear-gradient(#f5db05,#efeda8);
+}
+
+.delayable_sum {
+	background-image: linear-gradient(#058811,#a8efae);
+}
+
+.Urgent {
+	border-color: red;
+	color: red;
+	box-shadow: red
+}
+
+.Important {
+	border-color: orange;
+	color: orange;
+}
+
+.Delayable {
+	border-color: green;
+	color: green;
+}
