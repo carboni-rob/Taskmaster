@@ -3,7 +3,7 @@
 
 * Assignment: BScH Mobile Development, Digital Skills Academy
 
-* Student ID: STU-00001225 * Date : 2017/05/01
+* Student ID: STU-00001225 * Date : 2017/05/08
 
 * Ref: SEE INLINE COMMENTS
 
@@ -74,7 +74,7 @@ ul {
 }
 
 .important_sum {
-	background-image: linear-gradient(#f5db05,#efeda8);
+	background-image: linear-gradient(orange,#efeda8);
 }
 
 .delayable_sum {
